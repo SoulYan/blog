@@ -50,7 +50,7 @@ def register_template_context(app):
         user = User.query.first()
         categories = Category.query.order_by(Category.name).all()
         return dict(
-            user=user, categorys=categories,
+            user=user, categories=categories,
         )
 
 
