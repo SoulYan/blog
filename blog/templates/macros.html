@@ -1,7 +1,23 @@
-{% macro nav_link(endpoint, text) -%}
+{% macro nav_link(endpoint, text) %}
 <li class="nav-item {% if request.endpoint and request.endpoint == endpoint %}active{% endif %}">
     <a class="nav-link" href="{{ url_for(endpoint, **kwargs) }}">
         {{text}}
     </a>
 </li>
+{% endmacro %}
+
+{% macro page_pagination(pagination) %}
+    <div class="pagination">
+        {% for page in pagination.iter_pages(right_current=5) %}
+            {% if page != pagination.page and page != None%}
+                <div class="page-item">
+                    <a class="page-link" href="{{url_for('blog.index', page=page)}}">{{page}}</a>
+                </div>
+            {% elif page != None%}
+                <div class="page-item active"><a class="page-link" href="{{url_for('blog.index', page=page)}}">{{page}}</a></div>
+            {% else %}
+                <div class="page-item"><a class="page-link">...</a></div>
+            {% endif %}
+        {% endfor %}
+    </div>
 {% endmacro %}

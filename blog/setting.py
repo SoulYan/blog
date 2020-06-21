@@ -13,6 +13,7 @@ class BaseConfig(object):
     MAIL_USERNAME = os.getenv("MAIL_USERNAME")
     MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
     MAIL_DEFAULT_SENDER = ("liusiyuan", MAIL_USERNAME)
+    BLOG_POST_PER_PAGE = 3
 
 class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "dev.db")

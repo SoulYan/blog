@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% from "bootstrap/pagination.html" import render_pager %}
+{% from "macros.html" import page_pagination %}
+
+{% block title %}主页{% endblock %}
+
+{% block content %}
+    <div>
+        <h2 class="text-muted">&nbsp;{{user.blog_sub_title|default("subTitle")}}</h2>
+    </div>
+    <div class="col-sm row">
+        <div class="col-sm-9 page-item">
+            {% include "blog/_posts.html" %}
+        </div>
+        <div class="col-sm-3 sidebar">
+            {% include "blog/_sidebar.html" %}
+        </div>
+    </div>
+    {% if posts %}
+        {{page_pagination(pagination)}}
+    {% endif %}
+{% endblock %}
