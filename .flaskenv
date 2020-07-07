@@ -1,2 +1,2 @@
-FLASK_APP=blog:create_app
+FLASK_APP=blog:app
 FLASK_ENV=development
