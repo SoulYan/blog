@@ -9,3 +9,5 @@ WTForms==2.3.1
 Flask_CKEditor==0.4.4.1
 Flask_WTF==0.14.3
 flask_bootstrap==3.3.7.1
+gevent==1.4.0
+gunicorn==19.9.0
