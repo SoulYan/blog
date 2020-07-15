@@ -1,4 +1,3 @@
-from extensions import db
 from flask_wtf import FlaskForm
 from flask_ckeditor import CKEditorField
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, HiddenField
@@ -25,7 +24,7 @@ class PostForm(FlaskForm):
         self.category.choices = [(category.id, category.name) for category in Category.query.order_by(Category.name).all()]
 
 
-class Category(FlaskForm):
+class CategoryForm(FlaskForm):
     name = StringField("类别", validators=[DataRequired(), Length(1, 30)])
     submit = SubmitField()
 
@@ -34,7 +33,7 @@ class Category(FlaskForm):
             raise ValueError("Name already in use")
 
 
-class Comment(FlaskForm):
+class CommentForm(FlaskForm):
     author = StringField("名称", validators=[DataRequired(), Length(1, 30)])
     email = StringField("邮箱", validators=[DataRequired(), Email(), Length(1, 254)])
     site = StringField("站点", validators=[Optional(), URL(), Length(1, 254)])
@@ -42,7 +41,7 @@ class Comment(FlaskForm):
     submit = SubmitField()
 
 
-class AdminComment(Comment):
+class AdminCommentForm(CommentForm):
     author = HiddenField()
     email = HiddenField()
     site = HiddenField()
