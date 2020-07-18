@@ -11,3 +11,4 @@ Flask_WTF==0.14.3
 flask_bootstrap==3.3.7.1
 gevent==1.4.0
 gunicorn==19.9.0
+email_validator==1.1.1
